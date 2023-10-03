@@ -1,0 +1,13 @@
+name: TourneyHideSeek
+version: '${project.version}'
+main: org.cooltetxure.tourneyhideseek.TourneyHideSeek
+api-version: '1.18'
+
+commands:
+  game:
+    description: "run a command for the hide-seek game"
+    usage: "/game [start|stop|podium|addteam]"
+    aliases: []
+    permission: tourneyhideseek.command.game
+    permission-message: "you dont have permission to run the command"
+
