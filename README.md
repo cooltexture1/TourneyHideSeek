@@ -13,7 +13,7 @@ mvn package
 
 
 # Hydra Hosting
-This repository uses Hydra Hosting[https://seirdy.one/posts/2020/11/18/git-workflow-1/]
-[![Github](https://img.shields.io/badge/mirror-GitHub-black.svg?logo=github)](https://github.com/cooltexture1/TourneyHideSeek)
+This repository uses [Hydra Hosting](https://seirdy.one/posts/2020/11/18/git-workflow-1/)
 
+[![Github](https://img.shields.io/badge/mirror-GitHub-black.svg?logo=github)](https://github.com/cooltexture1/TourneyHideSeek)
 [![Codeberg](https://img.shields.io/badge/mirror-Codeberg-blue.svg?logo=codeberg)](https://codeberg.org/cooltexture/TourneyHideSeek)
