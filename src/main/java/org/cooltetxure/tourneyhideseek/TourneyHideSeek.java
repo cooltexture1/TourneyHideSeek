@@ -23,6 +23,7 @@ import java.util.List;
 enum Map {
   FANTASY,
   ZERO,
+  PORTSIDE,
 }
 
 public final class TourneyHideSeek extends JavaPlugin {

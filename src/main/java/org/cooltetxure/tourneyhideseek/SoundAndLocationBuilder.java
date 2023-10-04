@@ -39,6 +39,21 @@ public class SoundAndLocationBuilder {
         default:
           return null;
       }
+    } else if (TourneyHideSeek.map == Map.PORTSIDE) {
+      switch (loc) {
+        case "lobby_spawn":
+          return new Location(w, 1175, -38, 79);
+        case "map_center":
+          return new Location(w, 1206, -49, 90);
+        case "seeker_spawn":
+          return new Location(w, 1175, -49, 141);
+        case "hider_spawn":
+          return new Location(w, 1200, -49, 33);
+        case "podium_room":
+          return new Location(w, 467, 86, 1268);
+        default:
+          return null;
+      }
     } else {
       return null;
     }

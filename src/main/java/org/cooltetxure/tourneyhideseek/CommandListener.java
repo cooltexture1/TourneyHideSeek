@@ -210,6 +210,11 @@ public class CommandListener implements TabExecutor {
             p.teleport(SoundAndLocationBuilder.getLocation(cmd_sender.getWorld(), "lobby_spawn"));
           }
           return true;
+        } else if (args[1].equals("portside")) {
+          TourneyHideSeek.map = Map.PORTSIDE;
+          for (Player p : Bukkit.getOnlinePlayers()) {
+            p.teleport(SoundAndLocationBuilder.getLocation(cmd_sender.getWorld(), "lobby_spawn"));
+          }
         } else {
           return false;
         }
@@ -233,7 +238,7 @@ public class CommandListener implements TabExecutor {
       } else if (args[0].equals("hazard")) {
         return Arrays.asList("lightning_storm", "night_vision", "glowing", "speedy", "noisy", "clockwork");
       } else if (args[0].equals("switch_world")) {
-        return Arrays.asList("zero", "fantasy");
+        return Arrays.asList("zero", "fantasy", "portside");
       } else {
         return null;
       }

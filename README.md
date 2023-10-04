@@ -1,15 +1,7 @@
 # Tubnet Tourneys Hide and Seek
 This is the plugin for the Tubnet Tourneys, Hide and Seek event. Happening on Oct. 7th 2023.
-All important commands start with
-´´´
-/game
-´´´
-
-To build it, install maven and run
-´´´
-mvn package
-´´´
-
+All important commands start with `/game`.
+To build it, install maven and run `mvn package`.
 
 
 # Hydra Hosting
