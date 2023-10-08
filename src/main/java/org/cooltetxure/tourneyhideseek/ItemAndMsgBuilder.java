@@ -98,7 +98,7 @@ public class ItemAndMsgBuilder {
         return hazard
             .append(Component.text("Ligtning Storm!\n3 random hiders will be struck by lightning.\n").font(font_key));
       case "night_vision":
-        return hazard.append(Component.text("Night Vision!\nSeekers get 30sec of night vision.\n").font(font_key));
+        return hazard.append(Component.text("Night Vision!\nSeekers get 30 secs of night vision.\n").font(font_key));
       case "glowing":
         return hazard
             .append(Component.text("Glowing!\nOne Hider will start blinking for a few seconds.\n").font(font_key));
@@ -106,6 +106,9 @@ public class ItemAndMsgBuilder {
         return hazard.append(Component.text("Speedy!\nHiders get Speed.\n").font(font_key));
       case "noisy":
         return hazard.append(Component.text("Noisy!\nHiders will meow.\n").font(font_key));
+      case "visual_aid":
+        return hazard.append(
+            Component.text("Visual Aid!\nHiders Nametags will become visible for 10 seconds.\n").font(font_key));
       default:
         return null;
     }

@@ -46,7 +46,7 @@ public class BorderController {
     wb.setWarningDistance(10);
     wb.setDamageAmount(2);
 
-    if (TourneyHideSeek.map == Map.ZERO) {
+    if (TourneyHideSeek.map == Map.ZERO || TourneyHideSeek.map == Map.PORTSIDE) {
       return;
     }
 

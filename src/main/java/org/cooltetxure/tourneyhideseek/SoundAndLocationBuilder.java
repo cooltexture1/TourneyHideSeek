@@ -42,7 +42,7 @@ public class SoundAndLocationBuilder {
     } else if (TourneyHideSeek.map == Map.PORTSIDE) {
       switch (loc) {
         case "lobby_spawn":
-          return new Location(w, 1175, -38, 79);
+          return new Location(w, 1258, -18, 149);
         case "map_center":
           return new Location(w, 1206, -49, 90);
         case "seeker_spawn":

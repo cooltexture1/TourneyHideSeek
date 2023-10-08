@@ -123,6 +123,7 @@ public class PlayerListener implements Listener {
 
     if (players_online <= 1) {
       TourneyHideSeek.game_running = false;
+      world.hideBossBar(TourneyHideSeek.boss_bar);
 
       world.playSound(SoundAndLocationBuilder.getSound("game_over"));
       world.showTitle(ItemAndMsgBuilder.gameEnded());
@@ -140,7 +141,6 @@ public class PlayerListener implements Listener {
         public void run() {
           for (Player player : Bukkit.getOnlinePlayers()) {
             player.teleport(SoundAndLocationBuilder.getLocation(world, "lobby_spawn"));
-            player.getInventory().clear();
             if (player.isOp()) {
               try {
                 player.sendMessage(ItemAndMsgBuilder.debugPlacements());

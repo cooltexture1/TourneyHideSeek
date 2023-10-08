@@ -70,15 +70,19 @@ public final class TourneyHideSeek extends JavaPlugin {
     if (t.getName().equals("hider_team")) {
       chat_name = Component.text("\uE003 ").color(NamedTextColor.WHITE)
           .append(Component.text(p.getName()).color(NamedTextColor.AQUA));
+      p.setAllowFlight(false);
     } else if (t.getName().equals("seeker_team")) {
       chat_name = Component.text("\uE002 ").color(NamedTextColor.WHITE)
           .append(Component.text(p.getName()).color(NamedTextColor.DARK_RED));
+      p.setAllowFlight(false);
     } else if (t.getName().equals("admin_team")) {
       chat_name = Component.text("ꀪ ").color(NamedTextColor.WHITE)
           .append(Component.text(p.getName()).color(NamedTextColor.RED));
+      p.setAllowFlight(true);
     } else {
       chat_name = Component.text(" ").color(NamedTextColor.WHITE)
           .append(Component.text(p.getName()).color(NamedTextColor.GRAY));
+      p.setAllowFlight(true);
     }
     p.displayName(chat_name);
 
@@ -91,6 +95,8 @@ public final class TourneyHideSeek extends JavaPlugin {
     if (scoreboard.getTeam("hider_team") == null) {
       Team team_h = scoreboard.registerNewTeam("hider_team");
       team_h.setCanSeeFriendlyInvisibles(true);
+      // team_h.setOption(Team.Option.NAME_TAG_VISIBILITY,
+      // Team.OptionStatus.FOR_OTHER_TEAMS);
       team_h.prefix(Component.text(" \uE003 ").color(TextColor.color(255, 255, 255)));
       team_h.color(NamedTextColor.AQUA);
     }
@@ -119,11 +125,12 @@ public final class TourneyHideSeek extends JavaPlugin {
 
     obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-    obj.getScore(ChatColor.BOLD + "" + ChatColor.GOLD + "ᴇᴠᴇɴᴛ: " + ChatColor.DARK_GREEN + "9/24/23").setScore(13);
+    obj.getScore(ChatColor.BOLD + "" + ChatColor.GOLD + "ᴇᴠᴇɴᴛ: " + ChatColor.DARK_GREEN + "10/7/23").setScore(13);
     obj.getScore(ChatColor.DARK_RED + "").setScore(12);
     // obj.getScore(ChatColor.GOLD + "").setScore(11);
     obj.getScore(ChatColor.DARK_BLUE + "").setScore(10);
-    obj.getScore(ChatColor.WHITE + "ᴍᴀᴘ: " + ChatColor.WHITE + "ꜰᴀɴᴛᴀѕʏ").setScore(9);
+    // obj.getScore(ChatColor.WHITE + "ᴍᴀᴘ: " + ChatColor.WHITE +
+    // "ꜰᴀɴᴛᴀѕʏ").setScore(9);
     obj.getScore(ChatColor.BOLD + "").setScore(8);
     obj.getScore(ChatColor.DARK_GREEN + "").setScore(7);
     obj.getScore(ChatColor.DARK_AQUA + "").setScore(6);

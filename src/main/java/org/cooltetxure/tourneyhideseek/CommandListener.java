@@ -48,8 +48,8 @@ public class CommandListener implements TabExecutor {
         Scoreboard scoreboard = TourneyHideSeek.scoreboard;
         World world = cmd_sender.getWorld();
         TourneyHideSeek.game_running = true;
-        // scoreboard.getTeam("hider_team").setOption(Team.Option.NAME_TAG_VISIBILITY,
-        // Team.OptionStatus.FOR_OTHER_TEAMS);
+        scoreboard.getTeam("hider_team").setOption(Team.Option.NAME_TAG_VISIBILITY,
+            Team.OptionStatus.FOR_OTHER_TEAMS);
 
         // show the title and subtitle for each player
         for (Player player : Bukkit.getOnlinePlayers()) {
@@ -58,18 +58,18 @@ public class CommandListener implements TabExecutor {
 
         // game start task before teleporting
         new BukkitRunnable() {
-          public Integer game_start_timer = 40;
+          public Integer game_start_timer = 80;
 
           @Override
           public void run() {
             game_start_timer -= 1;
             Component start_text_main = Component.text("Starting in...").font(font_key);
 
-            if (game_start_timer <= 35 && game_start_timer >= 31) {
+            if (game_start_timer <= 75 && game_start_timer >= 71) {
               world.playSound(SoundAndLocationBuilder.getSound("countdown"));
               world.showTitle(Title.title(start_text_main, Component.text(game_start_timer - 30).font(font_key)));
             }
-            if (game_start_timer == 30) {
+            if (game_start_timer == 70) {
               world.playSound(SoundAndLocationBuilder.getSound("game_start"));
               world.clearTitle();
 
@@ -94,7 +94,7 @@ public class CommandListener implements TabExecutor {
 
               BorderController.seekerSpawnBorder(world);
             }
-            if (game_start_timer < 30) {
+            if (game_start_timer < 70) {
               // after teleporting
 
               if (((game_start_timer % 10) == 0) || (game_start_timer <= 5)) {
@@ -104,7 +104,9 @@ public class CommandListener implements TabExecutor {
               }
               if (game_start_timer == 0) {
                 world.playSound(SoundAndLocationBuilder.getSound("game_start"));
-                world.showBossBar(TourneyHideSeek.boss_bar);
+                if (TourneyHideSeek.map == Map.FANTASY) {
+                  world.showBossBar(TourneyHideSeek.boss_bar);
+                }
                 world.showTitle(ItemAndMsgBuilder.seekersHaveBeenReleased());
 
                 BorderController.startWorldborderMain(world);
@@ -127,7 +129,6 @@ public class CommandListener implements TabExecutor {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
           player.teleport(SoundAndLocationBuilder.getLocation(world, "lobby_spawn"));
-          player.getInventory().clear();
         }
         return true;
       }
@@ -187,6 +188,9 @@ public class CommandListener implements TabExecutor {
           case "clockwork":
             Hazards.clockWork(Integer.parseInt(args[2]));
             return true;
+          case "visual_aid":
+            Hazards.visualAid();
+            return true;
         }
         return false;
       }
@@ -202,18 +206,21 @@ public class CommandListener implements TabExecutor {
           TourneyHideSeek.map = Map.ZERO;
           for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(SoundAndLocationBuilder.getLocation(cmd_sender.getWorld(), "lobby_spawn"));
+            BorderController.setBorderToLobby(cmd_sender.getWorld());
           }
           return true;
         } else if (args[1].equals("fantasy")) {
           TourneyHideSeek.map = Map.FANTASY;
           for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(SoundAndLocationBuilder.getLocation(cmd_sender.getWorld(), "lobby_spawn"));
+            BorderController.setBorderToLobby(cmd_sender.getWorld());
           }
           return true;
         } else if (args[1].equals("portside")) {
           TourneyHideSeek.map = Map.PORTSIDE;
           for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(SoundAndLocationBuilder.getLocation(cmd_sender.getWorld(), "lobby_spawn"));
+            BorderController.setBorderToLobby(cmd_sender.getWorld());
           }
         } else {
           return false;
@@ -236,7 +243,8 @@ public class CommandListener implements TabExecutor {
       if (args[0].equals("get_item")) {
         return Arrays.asList("speed_orb", "trophy");
       } else if (args[0].equals("hazard")) {
-        return Arrays.asList("lightning_storm", "night_vision", "glowing", "speedy", "noisy", "clockwork");
+        return Arrays.asList("lightning_storm", "night_vision", "glowing", "speedy", "noisy", "clockwork",
+            "visual_aid");
       } else if (args[0].equals("switch_world")) {
         return Arrays.asList("zero", "fantasy", "portside");
       } else {

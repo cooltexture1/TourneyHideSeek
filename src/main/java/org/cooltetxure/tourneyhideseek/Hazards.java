@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Team;
 
 import net.kyori.adventure.text.Component;
 
@@ -187,7 +188,29 @@ public class Hazards {
         wb.setSize(wb.getSize() - x, 30);
       }
     }.runTaskLater(TourneyHideSeek.getInstance(), (20 * 8));
+  }
 
+  public static void visualAid() {
+    List<Player> hiders = getHidersShuffled();
+    World w = hiders.get(0).getWorld();
+    w.sendMessage(ItemAndMsgBuilder.generateHazard());
+
+    Team team_h = TourneyHideSeek.scoreboard.getTeam("hider_team");
+
+    new BukkitRunnable() {
+      @Override
+      public void run() {
+        w.sendMessage(ItemAndMsgBuilder.hazardText("visual_aid"));
+        team_h.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.ALWAYS);
+      }
+    }.runTaskLater(TourneyHideSeek.getInstance(), (20 * 5));
+
+    new BukkitRunnable() {
+      @Override
+      public void run() {
+        team_h.setOption(Team.Option.NAME_TAG_VISIBILITY, Team.OptionStatus.FOR_OTHER_TEAMS);
+      }
+    }.runTaskLater(TourneyHideSeek.getInstance(), (20 * 15));
   }
 
 }
